@@ -11,11 +11,14 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, onClick }: ProductCardProps) => {
     return (
-        <div onClick={() => onClick(product)} className="cursor-pointer py-4">
+        <div
+            onClick={() => onClick(product)}
+            className="cursor-pointer border-b border-white border-opacity-20 p-4"
+        >
             <div className="flex justify-between gap-10">
                 <div>
                     <h2 className="font-bold">{product.name}</h2>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-500">
                         {product.description}
                     </p>
                 </div>
@@ -33,7 +36,7 @@ export const ProductCard = ({ product, onClick }: ProductCardProps) => {
                     <span className="font-bold">${product.price}</span>
                 </div>
                 <BaseButton className="flex flex-row flex-nowrap items-center gap-2">
-                    order
+                    add to cart
                     <FaChevronRight />
                 </BaseButton>
             </div>

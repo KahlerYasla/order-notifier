@@ -16,7 +16,7 @@ import { LayoutContainer, NotFoundContainer } from "./modules/layout"
 import { AuthContainer } from "./modules/auth"
 import { NotificationContainer } from "./modules/notification/containers/NotificationContainer"
 import { ProductContainer } from "./modules/product/containers/ProductContainer"
-import { CartContainer } from "./modules/cart/containers/CartContainer"
+import CartContainer from "./modules/cart/containers/CartContainer"
 
 // create fake data
 const getProducts = (): Product[] => {
@@ -41,6 +41,13 @@ const getProducts = (): Product[] => {
             description: "description 3",
             price: 300,
             stock: 5,
+        },
+        {
+            id: "4",
+            name: "product 4",
+            description: "description 4",
+            price: 400,
+            stock: 20,
         },
     ]
 }

@@ -1,5 +1,5 @@
 # base image
-FROM node:16.3.0-alpine3.11
+FROM node:16-alpine
 WORKDIR /service
 COPY package.json .
 RUN npm install

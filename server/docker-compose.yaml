@@ -1,4 +1,15 @@
 services:
+    # needs to be commented out if client has been deployed separately
+    # for this case I have deployed the client together with the server
+    # but I don't recommend this for production, it's better to deploy them separately
+    # ordernotifier.one:
+    #     container_name: ordernotifier.one
+    #     build:
+    #         context: ../client/ordernotifier.one
+    #     ports:
+    #         - "4000:80"
+    # --------------------------------------------------------------------
+
     gateway:
         build:
             context: ./gateway
@@ -76,7 +87,7 @@ services:
             POSTGRES_DB: order_notifier_db
         volumes:
             - db_data:/var/lib/postgresql/data
-            - ./database/scripts:/docker-entrypoint-initdb.d # Path to your init scripts
+            - ./database/scripts:/docker-entrypoint-initdb.d # path to init scripts
 
 volumes:
     db_data:

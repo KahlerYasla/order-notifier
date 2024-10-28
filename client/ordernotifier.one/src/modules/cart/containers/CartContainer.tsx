@@ -9,3 +9,5 @@ const CartContainer: React.FC<CartContainerProps> = ({ className }) => {
         </div>
     )
 }
+
+export default CartContainer
