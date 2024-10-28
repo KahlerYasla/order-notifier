@@ -1,18 +1,24 @@
+// router v6
+import { Outlet } from "react-router-dom"
 
+// components
+import { Footer } from "../components/Footer"
+import { Navbar } from "../components/Navbar"
 
 interface LayoutContainerProps {
-    children: React.ReactNode;
-    className?: string;
-    }
+    className?: string
+}
 
-const LayoutContainer: React.FC<LayoutContainerProps> = ({ children, className }) => {
+export const LayoutContainer: React.FC<LayoutContainerProps> = ({
+    className,
+}) => {
     return (
         <div className={className}>
-            <Header />
+            <Navbar />
             <main className="main">
-                {children}
+                <Outlet />
             </main>
             <Footer />
         </div>
-    );
+    )
 }
