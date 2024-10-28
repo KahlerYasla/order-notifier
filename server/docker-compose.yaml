@@ -1,0 +1,50 @@
+version: "3"
+services:
+    db:
+        image: postgres:13
+        environment:
+            POSTGRES_USER: test
+            POSTGRES_PASSWORD: test
+            POSTGRES_DB: order_notifier
+        volumes:
+            - dbdata:/var/lib/postgresql/data
+    gateway:
+        image: order-notifier-gateway
+        build:
+            context: ../gateway
+            dockerfile: Dockerfile
+        ports:
+            - "8855:8855"
+        depends_on:
+            - db
+    auth:
+        image: order-notifier-auth
+        build:
+            context: ../auth
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+    order:
+        image: order-notifier-order
+        build:
+            context: ../order
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+    notification:
+        image: order-notifier-notification
+        build:
+            context: ../notification
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+    product:
+        image: order-notifier-product
+        build:
+            context: ../product
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+
+volumes:
+    dbdata:
