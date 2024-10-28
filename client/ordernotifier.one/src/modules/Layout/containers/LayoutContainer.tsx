@@ -15,7 +15,7 @@ export const LayoutContainer: React.FC<LayoutContainerProps> = ({
     return (
         <div className={className}>
             <Navbar />
-            <main className="main">
+            <main className="my-6 px-10">
                 <Outlet />
             </main>
             <Footer />

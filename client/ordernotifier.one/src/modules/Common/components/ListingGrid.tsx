@@ -1,29 +1,20 @@
+import { NotificationList, OrderList, ProductList } from "../types/itemList"
+
 interface ListingGridProps {
-    className?: string;
-    listings: Listing[];
+    className?: string
+    listings: OrderList | ProductList | NotificationList
 }
 
 const ListingGrid: React.FC<ListingGridProps> = ({ className, listings }) => {
     return (
         <div className={className}>
             <div className="listing-grid">
-                {listings.map(listing => (
-                    <ListingCard key={listing.id} listing={listing} />
+                {listings.map((listing) => (
+                    <p>listing grid test</p>
                 ))}
             </div>
         </div>
-    );
+    )
 }
 
-export default ListingGrid;
-
-const ListingCard: React.FC<{ listing: Listing }> = ({ listing }) => {
-    return (
-        <div className="listing-card">
-            <img src={listing.image} alt={listing.title} />
-            <h2>{listing.title}</h2>
-            <p>{listing.description}</p>
-            <p>{listing.price}</p>
-        </div>
-    );
-}
+export default ListingGrid

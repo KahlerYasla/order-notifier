@@ -1,50 +1,82 @@
-version: "3"
 services:
-    db:
-        image: postgres:13
-        environment:
-            POSTGRES_USER: test
-            POSTGRES_PASSWORD: test
-            POSTGRES_DB: order_notifier
-        volumes:
-            - dbdata:/var/lib/postgresql/data
     gateway:
-        image: order-notifier-gateway
         build:
-            context: ../gateway
-            dockerfile: Dockerfile
+            context: ./gateway
         ports:
-            - "8855:8855"
+            - "3000:3000"
         depends_on:
             - db
+            - auth
+            - cart
+            - common
+            - notification
+            - order
+            - product
+
     auth:
-        image: order-notifier-auth
+        container_name: order_notifier_auth
         build:
-            context: ../auth
-            dockerfile: Dockerfile
-        depends_on:
-            - db
-    order:
-        image: order-notifier-order
-        build:
-            context: ../order
-            dockerfile: Dockerfile
-        depends_on:
-            - db
-    notification:
-        image: order-notifier-notification
-        build:
-            context: ../notification
-            dockerfile: Dockerfile
-        depends_on:
-            - db
-    product:
-        image: order-notifier-product
-        build:
-            context: ../product
-            dockerfile: Dockerfile
+            context: ./services/auth
+        ports:
+            - "3001:3001"
         depends_on:
             - db
 
+    cart:
+        container_name: order_notifier_cart
+        build:
+            context: ./services/cart
+        ports:
+            - "3002:3002"
+        depends_on:
+            - db
+
+    common:
+        container_name: order_notifier_common
+        build:
+            context: ./services/common
+        ports:
+            - "3003:3003"
+        depends_on:
+            - db
+
+    notification:
+        container_name: order_notifier_notification
+        build:
+            context: ./services/notification
+        ports:
+            - "3004:3004"
+        depends_on:
+            - db
+
+    order:
+        container_name: order_notifier_order
+        build:
+            context: ./services/order
+        ports:
+            - "3005:3005"
+        depends_on:
+            - db
+
+    product:
+        container_name: order_notifier_product
+        build:
+            context: ./services/product
+        ports:
+            - "3006:3006"
+        depends_on:
+            - db
+
+    db:
+        image: postgres:latest
+        container_name: order_notifier_db
+        environment:
+            POSTGRES_USER: kahler
+            POSTGRES_PASSWORD: test
+            POSTGRES_DB: order_notifier_db
+        volumes:
+            - db_data:/var/lib/postgresql/data
+            - ./database/scripts:/docker-entrypoint-initdb.d # Path to your init scripts
+
 volumes:
-    dbdata:
+    db_data:

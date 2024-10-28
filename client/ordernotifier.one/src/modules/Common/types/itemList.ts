@@ -1,6 +1,6 @@
-import { Order } from "./order"
-import { Notification } from "./notification"
-import { Product } from "./product"
+import { Order } from "../../order"
+import { Product } from "../../product"
+import { Notification } from "../../notification"
 
 type ItemList<T> = T[]
 
