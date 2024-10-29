@@ -56,24 +56,27 @@ const getNotifications = (): Notification[] => {
     return [
         {
             id: "1",
+            isRead: false,
             message: "Notification 1",
-            type: "error",
+            orderId: "1",
             timestamp: new Date(),
-            read: false,
+            type: "success",
         },
         {
             id: "2",
+            isRead: false,
             message: "Notification 2",
-            type: "success",
+            orderId: "2",
             timestamp: new Date(),
-            read: true,
+            type: "error",
         },
         {
             id: "3",
+            isRead: false,
             message: "Notification 3",
-            type: "error",
+            orderId: "3",
             timestamp: new Date(),
-            read: false,
+            type: "error",
         },
     ]
 }

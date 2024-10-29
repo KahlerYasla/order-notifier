@@ -10,7 +10,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order }) => {
         <BaseCard>
             <div>
                 <h3>Order ID: {order.id}</h3>
-                <p>Total Amount: ${order.totalAmount}</p>
+                <p>Total Amount: ${order.total}</p>
                 <p>Status: {order.status}</p>
                 <p>Created At: {order.createdAt.toLocaleString()}</p>
                 <p>Updated At: {order.updatedAt.toLocaleString()}</p>
