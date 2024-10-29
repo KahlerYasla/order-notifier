@@ -2,17 +2,20 @@ services:
     # needs to be commented out if client has been deployed separately
     # for this case I have deployed the client together with the server
     # but I don't recommend this for production, it's better to deploy them separately
-    # ordernotifier.one:
-    #     container_name: ordernotifier.one
-    #     build:
-    #         context: ../client/ordernotifier.one
-    #     ports:
-    #         - "3000:80"
+    ordernotifier.one:
+        image: ordernotifier.one
+        container_name: ordernotifier.one
+        build:
+            context: ../client/ordernotifier.one
+        ports:
+            - "3000:80"
     # --------------------------------------------------------------------
 
     gateway:
+        image: order-notifier.gateway
+        container_name: order-notifier.gateway
         build:
-            context: ./gateway
+            context: ./services/gateway
         ports:
             - "3001:3000"
         depends_on:
@@ -35,7 +38,8 @@ services:
             - PRODUCT_SERVICE_URL=http://product:3000
 
     auth:
-        container_name: order_notifier_auth
+        image: order-notifier.auth
+        container_name: order-notifier.auth
         build:
             context: ./services/auth
         depends_on:
@@ -45,35 +49,40 @@ services:
             - DB_HOST=db
 
     cart:
-        container_name: order_notifier_cart
+        image: order-notifier.cart
+        container_name: order-notifier.cart
         build:
             context: ./services/cart
         depends_on:
             - db
 
     core:
-        container_name: order_notifier_core
+        image: order-notifier.core
+        container_name: order-notifier.core
         build:
             context: ./services/core
         depends_on:
             - db
 
     notification:
-        container_name: order_notifier_notification
+        image: order-notifier.notification
+        container_name: order-notifier.notification
         build:
             context: ./services/notification
         depends_on:
             - db
 
     order:
-        container_name: order_notifier_order
+        image: order-notifier.order
+        container_name: order-notifier.order
         build:
             context: ./services/order
         depends_on:
             - db
 
     product:
-        container_name: order_notifier_product
+        image: order-notifier.product
+        container_name: order-notifier.product
         build:
             context: ./services/product
         depends_on:
@@ -86,11 +95,11 @@ services:
 
     db:
         image: postgres:latest
-        container_name: order_notifier_db
+        container_name: order-notifier.db
         environment:
             POSTGRES_USER: kahler
             POSTGRES_PASSWORD: test
-            POSTGRES_DB: order_notifier_db
+            POSTGRES_DB: order_notifier
         volumes:
             - db_data:/var/lib/postgresql/data
             - ./database/scripts:/docker-entrypoint-initdb.d # path to init scripts
