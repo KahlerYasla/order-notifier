@@ -1,7 +1,11 @@
 // gateway/src/routes/productRoutes.ts
 import express from "express"
-import { validateAuthToken } from "../middlewares/authMiddleware"
+
+// utils
 import { forwardRequest } from "../utils/forwardRequest"
+
+// middlewares
+import { validateAuthToken } from "../middlewares/authMiddleware"
 
 const router = express.Router()
 
