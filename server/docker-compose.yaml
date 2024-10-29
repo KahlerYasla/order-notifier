@@ -14,7 +14,7 @@ services:
         build:
             context: ./gateway
         ports:
-            - "3000:3000"
+            - "3001:3000"
         depends_on:
             - db
             - auth
@@ -27,6 +27,12 @@ services:
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
+            - AUTH_SERVICE_URL=http://auth:3000
+            - CART_SERVICE_URL=http://cart:3000
+            - CORE_SERVICE_URL=http://core:3000
+            - NOTIFICATION_SERVICE_URL=http://notification:3000
+            - ORDER_SERVICE_URL=http://order:3000
+            - PRODUCT_SERVICE_URL=http://product:3000
 
     auth:
         container_name: order_notifier_auth
