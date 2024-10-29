@@ -5,7 +5,7 @@ export type Order = {
         productId: string
         quantity: number
     }>
-    totalAmount: number
+    total: number
     status: "pending" | "shipped" | "delivered" | "cancelled"
     createdAt: Date
     updatedAt: Date

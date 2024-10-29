@@ -7,7 +7,7 @@ services:
     #     build:
     #         context: ../client/ordernotifier.one
     #     ports:
-    #         - "4000:80"
+    #         - "3000:80"
     # --------------------------------------------------------------------
 
     gateway:
@@ -28,8 +28,6 @@ services:
         container_name: order_notifier_auth
         build:
             context: ./services/auth
-        ports:
-            - "3001:3001"
         depends_on:
             - db
 
@@ -37,8 +35,6 @@ services:
         container_name: order_notifier_cart
         build:
             context: ./services/cart
-        ports:
-            - "3002:3002"
         depends_on:
             - db
 
@@ -46,8 +42,6 @@ services:
         container_name: order_notifier_common
         build:
             context: ./services/common
-        ports:
-            - "3003:3003"
         depends_on:
             - db
 
@@ -55,8 +49,6 @@ services:
         container_name: order_notifier_notification
         build:
             context: ./services/notification
-        ports:
-            - "3004:3004"
         depends_on:
             - db
 
@@ -64,8 +56,6 @@ services:
         container_name: order_notifier_order
         build:
             context: ./services/order
-        ports:
-            - "3005:3005"
         depends_on:
             - db
 
@@ -73,8 +63,6 @@ services:
         container_name: order_notifier_product
         build:
             context: ./services/product
-        ports:
-            - "3006:3006"
         depends_on:
             - db
 
