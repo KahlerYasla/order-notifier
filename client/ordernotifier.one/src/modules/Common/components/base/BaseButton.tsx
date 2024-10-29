@@ -13,10 +13,10 @@ const getButtonClasses = (
     variant: "primary" | "secondary" | "danger",
     disabled: boolean,
 ) => {
-    const baseStyles = `px-4 py-2 font-semibold focus:outline-none transition duration-150`
+    const baseStyles = `px-4 py-2 font-bold focus:outline-none transition duration-150`
     const disabledStyles = `opacity-50 cursor-not-allowed`
     const variantStyles = {
-        primary: `border-white border-opacity-20 border-b-4 bg-white bg-opacity-5 hover:bg-opacity-5`,
+        primary: `border-b-4 border-gray-500 border-opacity-20 bg-opacity-[3%] bg-white hover:bg-opacity-5`,
         secondary: `border-b-4 border-secondary bg-black bg-opacity-5 hover:bg-opacity-10`,
         danger: `border-b-4 border-danger bg-black bg-opacity-5 hover:bg-opacity-10`,
     }

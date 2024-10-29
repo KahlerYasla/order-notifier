@@ -18,13 +18,15 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ className }) => {
     // stores
-    const userRole = useUserStore((state) => state.role)
+    const userRole = useUserStore((state) => state.user.role)
+    const isLoggedIn = useUserStore((state) => state.isLoggedIn)
+    const userName = useUserStore((state) => state.user.username)
 
     return (
         <nav className={`${className}`}>
             <ul className="flex flex-row items-center justify-start gap-8 px-10 py-3 pr-12 font-bold">
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/brand/raw.png`}
+                    src="/images/brand/raw.png"
                     alt="logo"
                     className="-mr-4 h-8 w-8 bg-primary p-[3px]"
                 />
@@ -37,28 +39,33 @@ export const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 </li>
                 <div className="h-[30px] w-[1px] bg-white bg-opacity-20" />
                 {userRole !== "admin" ? (
-                    <li>
-                        <Link className="flex items-center gap-3" to="/cart">
-                            <FaCartShopping size={"18px"} />
-                            Cart
-                        </Link>
-                    </li>
-                ) : (
-                    <li>
-                        <Link
-                            className="flex items-center gap-3"
-                            to="/notifications"
-                        >
-                            <IoIosNotifications size={"20px"} />
-                            Notifications
-                        </Link>
-                    </li>
-                )}
+                    <>
+                        <li>
+                            <Link
+                                className="flex items-center gap-3"
+                                to="/cart"
+                            >
+                                <FaCartShopping size={"18px"} />
+                                Cart
+                            </Link>
+                        </li>
+                        <div className="h-[30px] w-[1px] bg-white bg-opacity-20" />
+                    </>
+                ) : null}
+                <li>
+                    <Link className="flex items-center gap-3" to="/order">
+                        <IoIosNotifications size={"22px"} />
+                        Orders
+                    </Link>
+                </li>
                 <div className="h-[30px] w-[1px] bg-white bg-opacity-20" />
                 <li>
-                    <Link className="flex items-center gap-3" to="/profile">
+                    <Link
+                        className={`${isLoggedIn ? "text-primary" : ""} flex items-center gap-3`}
+                        to={isLoggedIn ? "/profile" : "/auth"}
+                    >
                         <RiFolderUserFill size={"20px"} />
-                        User
+                        {isLoggedIn ? userName : "Login"}
                     </Link>
                 </li>
             </ul>

@@ -17,6 +17,7 @@ import { AuthContainer } from "./modules/auth"
 import { NotificationContainer } from "./modules/notification/containers/NotificationContainer"
 import { ProductContainer } from "./modules/product/containers/ProductContainer"
 import CartContainer from "./modules/cart/containers/CartContainer"
+import { OrderContainer } from "./modules/order"
 
 // create fake data
 const getProducts = (): Product[] => {
@@ -97,7 +98,7 @@ root.render(
                         }
                     />
                     <Route
-                        path="notifications"
+                        path="notification"
                         element={
                             <NotificationContainer
                                 notifications={getNotifications()}
@@ -106,6 +107,7 @@ root.render(
                         }
                     />
                     <Route path="auth" element={<AuthContainer />} />
+                    <Route path="order" element={<OrderContainer />} />
                     <Route path="cart" element={<CartContainer />} />
                     <Route path="*" element={<NotFoundContainer />} />
                 </Route>

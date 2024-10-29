@@ -13,15 +13,17 @@ export const ProductContainer = ({
     onProductClick,
 }: ProductContainerProps) => {
     return (
-        <div className={`space-y-6 ${className}`}>
+        <div className={`gap-8 ${className}`}>
             <p className="font-bold">Products:</p>
-            {productList.map((product: Product) => (
-                <ProductCard
-                    key={product.id}
-                    product={product}
-                    onClick={onProductClick}
-                />
-            ))}
+            <div className="mt-4 flex flex-col gap-8">
+                {productList.map((product: Product) => (
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        onClick={onProductClick}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

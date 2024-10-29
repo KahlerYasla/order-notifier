@@ -13,7 +13,7 @@ export const ProductCard = ({ product, onClick }: ProductCardProps) => {
     return (
         <div
             onClick={() => onClick(product)}
-            className="cursor-pointer border-b border-white border-opacity-20 p-4"
+            className="cursor-pointer border-b border-gray-500 border-opacity-20 py-4"
         >
             <div className="flex justify-between gap-10">
                 <div>
@@ -37,7 +37,6 @@ export const ProductCard = ({ product, onClick }: ProductCardProps) => {
                 </div>
                 <BaseButton className="flex flex-row flex-nowrap items-center gap-2">
                     add to cart
-                    <FaChevronRight />
                 </BaseButton>
             </div>
         </div>

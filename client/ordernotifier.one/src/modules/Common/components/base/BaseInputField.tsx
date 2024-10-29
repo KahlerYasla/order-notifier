@@ -16,13 +16,13 @@ const BaseInputField: React.FC<BaseInputFieldProps> = ({
     return (
         <div className="flex flex-col space-y-1">
             {label && (
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-300">
                     {label}
                 </label>
             )}
             <input
                 {...props}
-                className={`border-b px-3 py-2 text-gray-700 transition duration-150 focus:border-blue-500 focus:outline-none ${className}`}
+                className={`border-b border-gray-500 border-opacity-20 bg-black px-3 py-2 text-gray-300 transition duration-150 focus:border-primary focus:outline-none ${className}`}
             />
             {errorMessage && (
                 <p className="text-xs text-red-500">{errorMessage}</p>
