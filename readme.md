@@ -1,12 +1,12 @@
 ### api documentation:
 
-[inspectate >](/order-notifier.docs/api.md)
+[inspectate >](/order-notifier.docs/api_doc.json)
 
 ---
 
 ### system architecture:
 
-![architecture](/order-notifier.docs/architecture.png)
+![architecture](/order-notifier.docs/architecture.drawio.png)
 
 ---
 
