@@ -1,6 +1,6 @@
 // gateway/src/utils/forwardRequest.ts
 import { Request, Response } from "express"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 
 export const forwardRequest = async (
     req: Request,

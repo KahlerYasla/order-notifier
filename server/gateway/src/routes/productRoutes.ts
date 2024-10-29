@@ -1,7 +1,7 @@
 // gateway/src/routes/productRoutes.ts
 import express from "express"
-import { forwardRequest } from "../utils/forwardRequest" // custom function to forward requests
-import { validateAuthToken } from "../middlewares/auth"
+import { validateAuthToken } from "../middlewares/authMiddleware"
+import { forwardRequest } from "../utils/forwardRequest"
 
 const router = express.Router()
 

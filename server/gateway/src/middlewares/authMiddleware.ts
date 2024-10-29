@@ -2,6 +2,9 @@
 import { Request, Response, NextFunction } from "express"
 import axios from "axios"
 
+// dtos
+import { ValidateResponse } from "../types/responses/validateResponse"
+
 export const validateAuthToken = async (
     req: Request,
     res: Response,
@@ -15,10 +18,13 @@ export const validateAuthToken = async (
     }
 
     try {
-        const response = await axios.post("http://auth:3000/validate", {
-            token,
-        })
-        if (response.data.valid) {
+        const response: ValidateResponse = await axios.post(
+            "http://auth:3000/validate",
+            {
+                token,
+            }
+        )
+        if (response.data.isValid) {
             next()
         } else {
             res.status(401).json({ message: "Unauthorized: Invalid token" })

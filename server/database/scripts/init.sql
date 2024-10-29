@@ -1,4 +1,4 @@
--- auth: 
+-- tables:
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
@@ -69,7 +69,25 @@ CREATE TABLE products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert sample data
+-- şimşir MCQueen improvements:
+-- late night coded while listening kurtlar vadisi operasyon muzigi: 
+-- https://open.spotify.com/track/043ve2lzl39KaEcaDU5xiW?si=c00ab9c4f47641df) 
+CREATE INDEX idx_users_email ON users(email);
+
+CREATE INDEX idx_products_name ON products(name);
+
+CREATE INDEX idx_orders_user_id ON orders(user_id);
+CREATE INDEX idx_orders_status ON orders(status);
+
+CREATE INDEX idx_notifications_order_id ON notifications(order_id);
+CREATE INDEX idx_notifications_is_read ON notifications(is_read);
+
+CREATE INDEX idx_cart_products_cart_product ON cart_products(cart_id, product_id);
+
+CREATE INDEX idx_order_products_order_product ON order_products(order_id, product_id);
+
+
+-- insert sample data:
 INSERT INTO roles (name) VALUES ('admin');
 INSERT INTO roles (name) VALUES ('user');
 
