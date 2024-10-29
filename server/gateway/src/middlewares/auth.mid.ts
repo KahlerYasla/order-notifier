@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express"
 import axios from "axios"
 
 // dtos
-import { ValidateResponse } from "../types/responses/validateResponse"
+import { ValidateResponse } from "../types/responses/validate.response"
 
 export const validateAuthToken = async (
     req: Request,

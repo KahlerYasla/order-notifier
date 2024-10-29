@@ -1,6 +1,6 @@
 // Example: src/routes/notifications.ts
 import express from "express"
-import redis from "../utils/redisClient"
+import redis from "../utils/redis.client"
 
 const router = express.Router()
 

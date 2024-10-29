@@ -2,11 +2,11 @@
 import express from "express"
 
 // routes
-import productRoutes from "./routes/productRoutes"
-import orderRoutes from "./routes/orderRoutes"
-import authRoutes from "./routes/authRoutes"
-import notificationRoutes from "./routes/notificationRoutes"
-import cartRoutes from "./routes/cartRoutes"
+import productRoutes from "./routes/product.routes"
+import orderRoutes from "./routes/order.routes"
+import authRoutes from "./routes/auth.routes"
+import notificationRoutes from "./routes/notification.routes"
+import cartRoutes from "./routes/cart.routes"
 
 const app = express()
 const PORT = process.env.PORT || 3000

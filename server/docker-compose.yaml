@@ -19,7 +19,7 @@ services:
             - db
             - auth
             - cart
-            - common
+            - core
             - notification
             - order
             - product
@@ -34,6 +34,9 @@ services:
             context: ./services/auth
         depends_on:
             - db
+        environment:
+            - JWT_SECRET=randfjwkefw3214234
+            - DB_HOST=db
 
     cart:
         container_name: order_notifier_cart
@@ -42,10 +45,10 @@ services:
         depends_on:
             - db
 
-    common:
-        container_name: order_notifier_common
+    core:
+        container_name: order_notifier_core
         build:
-            context: ./services/common
+            context: ./services/core
         depends_on:
             - db
 

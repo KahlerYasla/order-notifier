@@ -69,9 +69,7 @@ CREATE TABLE products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- şimşir MCQueen improvements:
--- late night coded while listening kurtlar vadisi operasyon muzigi: 
--- https://open.spotify.com/track/043ve2lzl39KaEcaDU5xiW?si=c00ab9c4f47641df) 
+-- indexes:
 CREATE INDEX idx_users_email ON users(email);
 
 CREATE INDEX idx_products_name ON products(name);
@@ -87,7 +85,7 @@ CREATE INDEX idx_cart_products_cart_product ON cart_products(cart_id, product_id
 CREATE INDEX idx_order_products_order_product ON order_products(order_id, product_id);
 
 
--- insert sample data:
+-- sample data:
 INSERT INTO roles (name) VALUES ('admin');
 INSERT INTO roles (name) VALUES ('user');
 

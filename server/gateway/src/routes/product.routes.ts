@@ -5,7 +5,7 @@ import express from "express"
 import { forwardRequest } from "../utils/forwardRequest"
 
 // middlewares
-import { validateAuthToken } from "../middlewares/authMiddleware"
+import { validateAuthToken } from "../middlewares/auth.mid"
 
 const router = express.Router()
 
