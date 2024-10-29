@@ -1,7 +1,7 @@
 -   system design:
-    -   [api documentation >](/order-notifier.docs/api_docs.pdf)
-    -   [architecture >](/order-notifier.docs/architecture.pdf)
-    -   [sequence diagram >](/order-notifier.docs/sequence-diagram.pdf)
+    -   [api documentation >](/order-notifier.docs/api_docs.json)
+    -   [architecture >](/order-notifier.docs/architecture.png)
+    -   [sequence diagrams >](/order-notifier.docs/sequence-diagrams.pdf)
     -   [data model >](/order-notifier.docs/data_model.png)
 
 ---
