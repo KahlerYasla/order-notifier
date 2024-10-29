@@ -50,6 +50,9 @@ services:
         environment:
             - JWT_SECRET=randfjwkefw3214234
             - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     cart:
         image: cart
@@ -58,6 +61,11 @@ services:
             context: ./cart
         depends_on:
             - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     core:
         image: core
@@ -66,6 +74,11 @@ services:
             context: ./core
         depends_on:
             - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     notification:
         image: notification
@@ -74,6 +87,11 @@ services:
             context: ./notification
         depends_on:
             - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     order:
         image: order
@@ -82,6 +100,11 @@ services:
             context: ./order
         depends_on:
             - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     product:
         image: product
@@ -90,6 +113,11 @@ services:
             context: ./product
         depends_on:
             - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=kahler
+            - DB_PASSWORD=test
+            - DB_NAME=order_notifier
 
     redis:
         image: redis:alpine
