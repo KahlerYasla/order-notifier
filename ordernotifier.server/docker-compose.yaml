@@ -1,0 +1,111 @@
+services:
+    # needs to be commented out if client has been deployed separately
+    # for this case I have deployed the client together with the server
+    # but I don't recommend this for production, it's better to deploy them separately
+    ordernotifier.one:
+        image: ordernotifier.one
+        container_name: ordernotifier.one
+        build:
+            context: ../client/ordernotifier.one
+        ports:
+            - "3000:80"
+        environment:
+            - REACT_APP_API_URL=http://localhost:3001
+
+    # --------------------------------------------------------------------
+
+    gateway:
+        image: gateway
+        container_name: gateway
+        build:
+            context: ./services/gateway
+        ports:
+            - "3001:3000"
+        depends_on:
+            - db
+            - auth
+            - cart
+            - core
+            - notification
+            - order
+            - product
+            - redis
+        environment:
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - AUTH_SERVICE_URL=http://auth:3000
+            - CART_SERVICE_URL=http://cart:3000
+            - CORE_SERVICE_URL=http://core:3000
+            - NOTIFICATION_SERVICE_URL=http://notification:3000
+            - ORDER_SERVICE_URL=http://order:3000
+            - PRODUCT_SERVICE_URL=http://product:3000
+
+    auth:
+        image: auth
+        container_name: auth
+        build:
+            context: ./services/auth
+        depends_on:
+            - db
+        environment:
+            - JWT_SECRET=randfjwkefw3214234
+            - DB_HOST=db
+
+    cart:
+        image: cart
+        container_name: cart
+        build:
+            context: ./services/cart
+        depends_on:
+            - db
+
+    core:
+        image: core
+        container_name: core
+        build:
+            context: ./services/core
+        depends_on:
+            - db
+
+    notification:
+        image: notification
+        container_name: notification
+        build:
+            context: ./services/notification
+        depends_on:
+            - db
+
+    order:
+        image: order
+        container_name: order
+        build:
+            context: ./services/order
+        depends_on:
+            - db
+
+    product:
+        image: product
+        container_name: product
+        build:
+            context: ./services/product
+        depends_on:
+            - db
+
+    redis:
+        image: redis:alpine
+        ports:
+            - "6379:6379"
+
+    db:
+        image: postgres:latest
+        container_name: db
+        environment:
+            POSTGRES_USER: kahler
+            POSTGRES_PASSWORD: test
+            POSTGRES_DB: order_notifier
+        volumes:
+            - db_data:/var/lib/postgresql/data
+            - ./database/scripts:/docker-entrypoint-initdb.d # path to init scripts
+
+volumes:
+    db_data:
