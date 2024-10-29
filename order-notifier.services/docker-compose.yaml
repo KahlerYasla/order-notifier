@@ -50,9 +50,9 @@ services:
         environment:
             - JWT_SECRET=randfjwkefw3214234
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     cart:
         image: cart
@@ -63,9 +63,9 @@ services:
             - db
         environment:
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     core:
         image: core
@@ -76,9 +76,9 @@ services:
             - db
         environment:
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     notification:
         image: notification
@@ -89,9 +89,9 @@ services:
             - db
         environment:
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     order:
         image: order
@@ -102,9 +102,9 @@ services:
             - db
         environment:
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     product:
         image: product
@@ -115,9 +115,9 @@ services:
             - db
         environment:
             - DB_HOST=db
-            - DB_USER=kahler
-            - DB_PASSWORD=test
-            - DB_NAME=order_notifier
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
 
     redis:
         image: redis:alpine
@@ -130,9 +130,10 @@ services:
             - "5432:5432"
         container_name: db
         environment:
-            POSTGRES_USER: kahler
-            POSTGRES_PASSWORD: test
-            POSTGRES_DB: order_notifier
+            - DB_HOST=db
+            - POSTGRES_USER=kahler
+            - POSTGRES_PASSWORD=test
+            - POSTGRES_DB=order_notifier
         volumes:
             - db_data:/var/lib/postgresql/data
             - ./database/scripts:/docker-entrypoint-initdb.d # path to init scripts
