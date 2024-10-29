@@ -6,7 +6,7 @@ services:
         image: ordernotifier.one
         container_name: ordernotifier.one
         build:
-            context: ../client/ordernotifier.one
+            context: ../order-notifier.clients/ordernotifier.one
         ports:
             - "3000:80"
         environment:
@@ -33,12 +33,12 @@ services:
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
-            - AUTH_SERVICE_URL=http://auth:3000
-            - CART_SERVICE_URL=http://cart:3000
-            - CORE_SERVICE_URL=http://core:3000
-            - NOTIFICATION_SERVICE_URL=http://notification:3000
-            - ORDER_SERVICE_URL=http://order:3000
-            - PRODUCT_SERVICE_URL=http://product:3000
+            - AUTH_SERVICE_URL=http://auth:3001
+            - CART_SERVICE_URL=http://cart:3002
+            - CORE_SERVICE_URL=http://core:3003
+            - NOTIFICATION_SERVICE_URL=http://notification:3004
+            - ORDER_SERVICE_URL=http://order:3005
+            - PRODUCT_SERVICE_URL=http://product:3006
 
     auth:
         image: auth

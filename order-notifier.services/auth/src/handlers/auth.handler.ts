@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { AuthRepo } from "../repos/auth.repo"
 import { generateToken } from "../utils/jwt.util"
+import logger from "../utils/logger.util"
 
 const authRepo = new AuthRepo()
 
@@ -17,6 +18,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 }
 
 export const login = async (req: Request, res: Response): Promise<void> => {
+    logger.info("login request: ", req.body)
     const { username, password } = req.body
     try {
         const user = await authRepo.login(username, password)

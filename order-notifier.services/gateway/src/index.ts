@@ -8,6 +8,9 @@ import notificationRoutes from "./routes/notification.routes"
 import cartRoutes from "./routes/cart.routes"
 import productRoutes from "./routes/product.routes"
 
+import morgan from "morgan"
+import logger from "./utils/logger.util"
+
 dotenv.config()
 
 const app = express()
@@ -18,6 +21,15 @@ app.use(cors()) // Use the CORS middleware
 
 // Middleware to parse JSON bodies
 app.use(express.json())
+
+// Use Morgan with Winston as the stream
+app.use(
+    morgan("combined", {
+        stream: {
+            write: (message: string) => logger.info(message.trim()),
+        },
+    })
+)
 
 // Routes
 app.use("/api", authRoutes)
